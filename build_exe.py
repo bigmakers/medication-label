@@ -11,15 +11,18 @@ def build():
     script = os.path.join(os.path.dirname(__file__), "medication_label.py")
     args = [
         script,
-        "--onefile",
         "--windowed",
         "--name=MedicationLabel",
         "--clean",
+        "--noconfirm",
     ]
 
-    # macOS の場合は .app バンドル名を設定
     if sys.platform == "darwin":
+        # macOS: onedir + .app バンドル
         args.append("--osx-bundle-identifier=com.medication.label")
+    else:
+        # Windows/Linux: onefile
+        args.append("--onefile")
 
     PyInstaller.__main__.run(args)
     print("\nビルド完了！ dist/ フォルダを確認してください。")
