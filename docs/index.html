@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>服薬ラベル発行ツール - もう、手書きラベルに追われない。</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+    color: #333;
+    line-height: 1.9;
+    background: #fafaf8;
+  }
+
+  /* ===== ヒーロー ===== */
+  .hero {
+    background: linear-gradient(135deg, #f0f4f8 0%, #e8f0e8 50%, #f5f0eb 100%);
+    text-align: center;
+    padding: 70px 20px 60px;
+  }
+  .hero-catch {
+    font-size: 15px;
+    color: #7c9a7e;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #2d4a3e;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(transparent 60%, #d4e8c7 60%);
+    padding: 0 4px;
+  }
+  .hero p.sub {
+    font-size: 16px;
+    color: #5a7a5d;
+    max-width: 560px;
+    margin: 0 auto 30px;
+    font-weight: 300;
+  }
+  .hero-img {
+    max-width: 700px;
+    width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    margin: 0 auto;
+    display: block;
+  }
+  .badge {
+    display: inline-block;
+    background: #2d6a4f;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== セクション共通 ===== */
+  section { padding: 60px 20px; }
+  .container { max-width: 780px; margin: 0 auto; }
+  .section-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2d4a3e;
+    margin-bottom: 12px;
+  }
+  .section-sub {
+    text-align: center;
+    font-size: 14px;
+    color: #8a9a8c;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== 共感セクション ===== */
+  .empathy {
+    background: #fff;
+  }
+  .empathy-list {
+    list-style: none;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .empathy-list li {
+    font-size: 16px;
+    padding: 14px 0;
+    border-bottom: 1px dashed #dde8dd;
+    color: #4a6a4d;
+    position: relative;
+    padding-left: 32px;
+  }
+  .empathy-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e8f0e8;
+    border: 2px solid #a8c8aa;
+  }
+  .empathy-list li:last-child { border-bottom: none; }
+  .empathy-msg {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2d6a4f;
+    line-height: 1.8;
+  }
+
+  /* ===== 特徴セクション ===== */
+  .features {
+    background: #f5f8f5;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .feature-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    transition: transform .2s;
+  }
+  .feature-card:hover { transform: translateY(-3px); }
+  .feature-card .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .feature-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d4a3e;
+    margin-bottom: 8px;
+  }
+  .feature-card p {
+    font-size: 14px;
+    color: #6a7a6c;
+    line-height: 1.7;
+  }
+
+  /* ===== 使い方 ===== */
+  .howto { background: #fff; }
+  .steps {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .step {
+    text-align: center;
+    flex: 0 1 200px;
+  }
+  .step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #2d6a4f;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+  }
+  .step h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2d4a3e;
+    margin-bottom: 6px;
+  }
+  .step p {
+    font-size: 13px;
+    color: #7a8a7c;
+    line-height: 1.7;
+  }
+  .step-arrow {
+    display: flex;
+    align-items: center;
+    color: #a8c8aa;
+    font-size: 24px;
+    padding-top: 10px;
+  }
+
+  /* ===== 必要なもの（Amazon リンク） ===== */
+  .products {
+    background: #f9f6f2;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 20px;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 24px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,.05);
+  }
+  .product-card .product-icon {
+    font-size: 48px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .product-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2d4a3e;
+    margin-bottom: 6px;
+  }
+  .product-card .product-model {
+    font-size: 13px;
+    color: #8a8a8a;
+    margin-bottom: 10px;
+  }
+  .product-card p {
+    font-size: 14px;
+    color: #6a7a6c;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .amazon-btn {
+    display: inline-block;
+    background: #f6a623;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .amazon-btn:hover { background: #e5951a; }
+
+  /* ===== Windows注意 ===== */
+  .win-notice {
+    background: #fff8f0;
+    border-left: 4px solid #e8a84c;
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    margin: 30px auto;
+    max-width: 640px;
+  }
+  .win-notice h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #b07820;
+    margin-bottom: 10px;
+  }
+  .win-notice p {
+    font-size: 14px;
+    color: #7a6a50;
+    line-height: 1.8;
+  }
+  .win-notice ol {
+    margin: 10px 0 0 20px;
+    font-size: 14px;
+    color: #7a6a50;
+    line-height: 2;
+  }
+  .win-notice code {
+    background: #ffecd0;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 13px;
+  }
+
+  /* ===== CTA ===== */
+  .cta {
+    background: linear-gradient(135deg, #2d6a4f, #3d8b6a);
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .cta h2 {
+    font-size: 26px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .cta p {
+    color: rgba(255,255,255,.8);
+    font-size: 15px;
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #fff;
+    color: #2d6a4f;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 16px 48px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,.15);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,.2);
+  }
+  .cta-note {
+    color: rgba(255,255,255,.6);
+    font-size: 12px;
+    margin-top: 14px;
+  }
+
+  /* ===== フッター ===== */
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 12px;
+    color: #aaa;
+    background: #f0f0f0;
+  }
+  footer a { color: #888; }
+
+  /* ===== レスポンシブ ===== */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 24px; }
+    .feature-grid, .product-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; align-items: center; }
+    .step-arrow { transform: rotate(90deg); }
+    .section-title { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== ヒーロー ===== -->
+<section class="hero">
+  <p class="hero-catch">MEDICATION LABEL TOOL</p>
+  <span class="badge">無料ダウンロード</span>
+  <h1>もう、手書きラベルに<br><em>追われない</em>朝へ。</h1>
+  <p class="sub">患者さまの名前、日付、用法。毎日くり返すラベル作業を、<br>ほんの数クリックで。あなたの時間を、あなたに返します。</p>
+  <img class="hero-img" src="../screenshot_app.png" alt="服薬ラベル発行ツールの画面">
+</section>
+
+<!-- ===== 共感セクション ===== -->
+<section class="empathy">
+  <div class="container">
+    <h2 class="section-title">こんなこと、ありませんか？</h2>
+    <p class="section-sub">-- 毎日の小さなストレス --</p>
+    <ul class="empathy-list">
+      <li>朝の調剤室、手書きラベルだけで10分以上かかってしまう</li>
+      <li>患者さまが増えるたび、書き間違いが気になって何度も確認する</li>
+      <li>同じ内容を何枚も書いていると、手が痛くなってくる</li>
+      <li>「もっと効率よくできたら」と思いながら、忙しくて調べる余裕がない</li>
+    </ul>
+    <p class="empathy-msg">
+      それは、あなたが丁寧に仕事をしている証拠。<br>
+      だからこそ、<strong>その手間をそっと手放してみませんか。</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ===== 特徴セクション ===== -->
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">あなたの業務に、静かに寄り添う機能</h2>
+    <p class="section-sub">-- Features --</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="icon">&#128203;</span>
+        <h3>患者リスト管理</h3>
+        <p>一度登録すれば、名前・施設・用法を自動で呼び出し。毎回入力する手間から解放されます。</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">&#128197;</span>
+        <h3>日付も曜日も自動</h3>
+        <p>開始日と日数を選ぶだけ。曜日の色分け付きで、患者さまにも見やすいラベルに仕上がります。</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">&#128164;</span>
+        <h3>ひらがな表示モード</h3>
+        <p>高齢の患者さまにも安心。用法を「あさ」「ひる」「ゆう」とひらがなで印刷できます。</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">&#128424;</span>
+        <h3>ワンクリックPDF</h3>
+        <p>ボタンひとつでPDF生成。お手持ちのラベルプリンターですぐに印刷できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 使い方 ===== -->
+<section class="howto">
+  <div class="container">
+    <h2 class="section-title">使い方は、驚くほどシンプル</h2>
+    <p class="section-sub">-- How to Use --</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>患者さまを選ぶ</h4>
+        <p>リストから選択、または新規入力。施設名・よみがなも登録できます。</p>
+      </div>
+      <div class="step-arrow">&#9654;</div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>日付と用法を設定</h4>
+        <p>カレンダーで開始日を選び、服用時点にチェックを入れるだけ。</p>
+      </div>
+      <div class="step-arrow">&#9654;</div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>印刷する</h4>
+        <p>「PDF生成」ボタンを押すと、ラベルが一括で作成されます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 必要なもの（Amazonリンク） ===== -->
+<section class="products">
+  <div class="container">
+    <h2 class="section-title">はじめるために必要なもの</h2>
+    <p class="section-sub">-- Recommended Items --</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="product-icon">&#128424;</span>
+        <h3>ラベルプリンター</h3>
+        <p class="product-model">Brother QL-800</p>
+        <p>コンパクトで場所をとらず、調剤室のデスクにもすっきり。USB接続ですぐに使えます。</p>
+        <a href="#" class="amazon-btn">Amazonで見る</a>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">&#128196;</span>
+        <h3>互換ラベル用紙</h3>
+        <p class="product-model">DK-1226 互換</p>
+        <p>29mm x 52mmのラベルサイズにぴったり。互換品なのでコストも抑えられます。</p>
+        <a href="#" class="amazon-btn">Amazonで見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ダウンロード ===== -->
+<section class="cta" id="download">
+  <h2>まずは、試してみませんか。</h2>
+  <p>無料でダウンロード。インストールも登録も不要です。</p>
+  <a href="https://github.com/bigmakers/medication-label/releases/latest" class="cta-btn">
+    無料ダウンロードはこちら
+  </a>
+  <p class="cta-note">Windows (.exe) / macOS (.app) 対応</p>
+</section>
+
+<!-- ===== Windows注意書き ===== -->
+<section style="background:#fff; padding: 40px 20px;">
+  <div class="container">
+    <div class="win-notice">
+      <h4>&#9888;&#65039; Windowsをお使いの方へ - 初回起動時のご案内</h4>
+      <p>
+        初めてアプリを起動すると、Windows Defender SmartScreenの警告画面が表示されることがあります。<br>
+        これは「発行元が未確認」のアプリに対して表示される一般的な保護機能です。<br>
+        安全にお使いいただけますので、以下の手順で起動してください。
+      </p>
+      <ol>
+        <li>「<strong>WindowsによってPCが保護されました</strong>」という画面が表示されます</li>
+        <li>画面内の「<code>詳細情報</code>」というテキストリンクをクリックします</li>
+        <li>すると「<strong>実行</strong>」ボタンが表示されますので、それをクリックします</li>
+        <li>2回目以降は、この画面は表示されません</li>
+      </ol>
+      <p style="margin-top: 12px; font-size: 13px; color: #a08a60;">
+        ※ 「詳細情報」をクリックしないと「実行」ボタンが見えない仕様になっています。ご注意ください。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <p>&copy; 2026 服薬ラベル発行ツール | <a href="https://github.com/bigmakers/medication-label">GitHub</a></p>
+</footer>
+
+</body>
+</html>
