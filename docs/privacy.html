@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシーポリシー - 服薬ラベル発行ツール</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+    color: #333;
+    line-height: 1.9;
+    background: #fafaf8;
+  }
+
+  /* ナビ */
+  .nav {
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav a { color: #2d6a4f; text-decoration: none; font-weight: 500; font-size: 14px; }
+  .nav a:hover { text-decoration: underline; }
+  .nav-title { font-weight: 700; font-size: 15px; color: #2d4a3e; }
+
+  /* ヘッダー */
+  .page-header {
+    background: linear-gradient(135deg, #f0f4f8 0%, #e8f0e8 50%, #f5f0eb 100%);
+    text-align: center;
+    padding: 50px 20px 40px;
+  }
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d4a3e;
+    margin-bottom: 8px;
+  }
+  .page-header p {
+    font-size: 15px;
+    color: #5a7a5d;
+    font-weight: 300;
+  }
+
+  /* コンテンツ */
+  .content {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  /* 重要ボックス */
+  .important-box {
+    background: #fff0f0;
+    border: 2px solid #e85050;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 40px;
+  }
+  .important-box h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #c03030;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .important-box p {
+    font-size: 15px;
+    color: #6a3030;
+    margin-bottom: 10px;
+  }
+  .important-box ul {
+    margin: 10px 0 0 24px;
+    font-size: 15px;
+    color: #6a3030;
+  }
+  .important-box li {
+    padding: 4px 0;
+    line-height: 1.8;
+  }
+
+  .chapter {
+    margin-bottom: 40px;
+  }
+  .chapter h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2d4a3e;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #d4e8c7;
+    margin-bottom: 16px;
+  }
+  .chapter p {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 12px;
+  }
+  .chapter ul, .chapter ol {
+    margin: 8px 0 16px 24px;
+    font-size: 15px;
+    color: #444;
+  }
+  .chapter li {
+    padding: 3px 0;
+    line-height: 1.8;
+  }
+  .chapter h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #3d6a50;
+    margin: 20px 0 8px;
+    padding-left: 14px;
+    border-left: 3px solid #a8c8aa;
+  }
+
+  .update-date {
+    text-align: right;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 30px;
+  }
+
+  /* フッター */
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 12px;
+    color: #aaa;
+    background: #f0f0f0;
+  }
+  footer a { color: #888; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page-header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ナビ -->
+<div class="nav">
+  <span class="nav-title">服薬ラベル発行ツール</span>
+  <div>
+    <a href="index.html">トップ</a>&nbsp;&nbsp;&nbsp;
+    <a href="manual.html">使い方</a>&nbsp;&nbsp;&nbsp;
+    <a href="privacy.html">プライバシーポリシー</a>
+  </div>
+</div>
+
+<!-- ヘッダー -->
+<div class="page-header">
+  <h1>プライバシーポリシー</h1>
+  <p>本アプリケーションにおける情報の取り扱いについて</p>
+</div>
+
+<!-- コンテンツ -->
+<div class="content">
+
+  <p class="update-date">最終更新日: 2026年2月18日</p>
+
+  <!-- 最重要：患者情報の責任 -->
+  <div class="important-box">
+    <h2>&#9888;&#65039; 患者情報の取り扱いに関する重要事項</h2>
+    <p><strong>本アプリケーションに入力・保存される患者情報（氏名、施設名、服薬情報、コメント等）の管理・取り扱いは、すべてご利用者様の責任において行われるものとします。</strong></p>
+    <p>アプリケーション開発者は、ご利用者様が本アプリケーションに入力・保存した患者情報に関して、以下を含むいかなる責任も負いません。</p>
+    <ul>
+      <li>患者情報の漏洩、紛失、消失、破損</li>
+      <li>患者情報の不正アクセスまたは第三者による取得</li>
+      <li>患者情報の誤入力、誤印刷、またはそれらに起因する医療事故・損害</li>
+      <li>PCの故障、盗難、マルウェア感染等による患者情報の流出</li>
+      <li>バックアップの未実施によるデータ消失</li>
+      <li>本アプリケーションの使用・不使用に起因するあらゆる直接的・間接的損害</li>
+    </ul>
+    <p style="margin-top:14px;">ご利用者様は、各自の所属する施設・組織のセキュリティポリシーおよび個人情報保護に関する法令・規則を遵守のうえ、ご自身の責任においてご利用ください。</p>
+  </div>
+
+  <!-- 1. 基本方針 -->
+  <div class="chapter">
+    <h2>1. 基本方針</h2>
+    <p>本アプリケーション「服薬ラベル発行ツール」（以下「本アプリ」）は、ご利用者様のプライバシーを尊重し、個人情報の保護に配慮して設計されています。</p>
+    <p>本アプリは完全にオフラインで動作し、入力された情報はご利用者様のPC内にのみ保存されます。</p>
+  </div>
+
+  <!-- 2. データの保存 -->
+  <div class="chapter">
+    <h2>2. データの保存場所と方式</h2>
+    <p>本アプリに入力された患者情報は、以下の場所にJSONファイルとして保存されます。</p>
+    <ul>
+      <li><strong>macOS</strong>: <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;">~/.medication_labels.json</code></li>
+      <li><strong>Windows</strong>: <code style="background:#f0f0f0;padding:2px 6px;border-radius:3px;">C:\Users\(ユーザー名)\.medication_labels.json</code></li>
+    </ul>
+    <p>このファイルは暗号化されていない平文のJSONファイルです。ファイルへのアクセス権限は、OSのユーザーアカウント設定に依存します。</p>
+  </div>
+
+  <!-- 3. 収集しない情報 -->
+  <div class="chapter">
+    <h2>3. 本アプリが収集・送信しない情報</h2>
+    <p>本アプリは以下の情報を一切収集・送信しません。</p>
+    <ul>
+      <li>患者情報（氏名、施設名、服薬情報等）</li>
+      <li>ご利用者様の個人情報</li>
+      <li>利用状況・操作ログ・アクセス解析データ</li>
+      <li>位置情報、IPアドレス、デバイス情報</li>
+      <li>その他、いかなるデータも外部サーバーへの送信は行いません</li>
+    </ul>
+    <p>本アプリはインターネット接続を必要とせず、すべての処理がご利用者様のPC内で完結します。</p>
+  </div>
+
+  <!-- 4. 第三者提供 -->
+  <div class="chapter">
+    <h2>4. 第三者への情報提供</h2>
+    <p>本アプリは外部サービスとの連携、広告の表示、アクセス解析ツールの使用を一切行っていません。そのため、第三者への情報提供は行われません。</p>
+  </div>
+
+  <!-- 5. ご利用者様の責務 -->
+  <div class="chapter">
+    <h2>5. ご利用者様の責務</h2>
+    <p>本アプリをご利用になるにあたり、ご利用者様には以下の責務があります。</p>
+
+    <h3>データ管理</h3>
+    <ul>
+      <li>患者情報を含むデータファイルの適切な管理・保護を行うこと</li>
+      <li>定期的にデータのバックアップ（エクスポート）を行うこと</li>
+      <li>共有PCでの使用にあたっては、適切なアクセス制御を行うこと</li>
+    </ul>
+
+    <h3>法令遵守</h3>
+    <ul>
+      <li>個人情報の保護に関する法律（個人情報保護法）を遵守すること</li>
+      <li>所属する施設・組織のセキュリティポリシーを遵守すること</li>
+      <li>患者情報の取り扱いに関する関連法規・ガイドラインを遵守すること</li>
+    </ul>
+
+    <h3>セキュリティ対策</h3>
+    <ul>
+      <li>PCに適切なパスワードを設定すること</li>
+      <li>OSおよびセキュリティソフトを最新の状態に保つこと</li>
+      <li>不特定多数がアクセスできるPCでの使用を避けること</li>
+    </ul>
+  </div>
+
+  <!-- 6. 免責事項 -->
+  <div class="chapter">
+    <h2>6. 免責事項</h2>
+    <p>本アプリの開発者は、本アプリの使用または使用不能に起因して生じた、直接的・間接的を問わずあらゆる損害（データの消失、業務の中断、利益の損失、医療事故、患者情報の漏洩等を含むがこれに限らない）について、一切の責任を負いません。</p>
+    <p>本アプリは「現状有姿（AS-IS）」で提供されており、明示的または黙示的を問わず、商品性、特定目的への適合性、正確性、完全性、信頼性に関するいかなる保証も行いません。</p>
+    <p>本アプリの使用により生じた結果については、すべてご利用者様の自己責任とします。</p>
+  </div>
+
+  <!-- 7. オープンソース -->
+  <div class="chapter">
+    <h2>7. オープンソースについて</h2>
+    <p>本アプリのソースコードは<a href="https://github.com/bigmakers/medication-label" style="color:#2d6a4f;">GitHub</a>で公開されています。
+      コードの内容をご自身でご確認いただくことが可能です。</p>
+  </div>
+
+  <!-- 8. 変更 -->
+  <div class="chapter">
+    <h2>8. ポリシーの変更</h2>
+    <p>本プライバシーポリシーは、必要に応じて予告なく変更される場合があります。変更後のポリシーは本ページに掲載された時点で効力を生じるものとします。</p>
+  </div>
+
+</div>
+
+<!-- フッター -->
+<footer>
+  <p>
+    <a href="index.html">トップ</a>&nbsp;|&nbsp;
+    <a href="manual.html">使い方ガイド</a>&nbsp;|&nbsp;
+    <a href="https://github.com/bigmakers/medication-label">GitHub</a>
+  </p>
+  <p style="margin-top:8px;">&copy; 2026 服薬ラベル発行ツール</p>
+</footer>
+
+</body>
+</html>
