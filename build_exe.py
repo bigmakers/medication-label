@@ -25,7 +25,7 @@ def build():
         args.append("--onefile")
 
     PyInstaller.__main__.run(args)
-    print("\nビルド完了！ dist/ フォルダを確認してください。")
+    print("\nBuild complete! Check the dist/ folder.")
 
 if __name__ == "__main__":
     build()
